@@ -1,6 +1,8 @@
 /// <reference path="lib/embox2d.d.ts"/>
 /// <reference path="lib/embox2d-html5canvas-debugDraw.d.ts"/>
 
+// look at https://github.com/photonstorm/phaser/blob/master/typescript/pixi.d.ts
+
 var requestAnimFrame: (callback: () => void) => void = (function(){ 
 	return window.requestAnimationFrame || 
 	(<any>window).webkitRequestAnimationFrame || 

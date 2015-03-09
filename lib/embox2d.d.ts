@@ -1,41 +1,41 @@
 declare module Box2D {
 
-	export class b2BodyType {}
-	export class b2_dynamicBody extends b2BodyType {}
-	export class b2_kinematicBody extends b2BodyType {}
-	export class b2_staticBody extends b2BodyType {}
+	export interface b2BodyType {}
+	export var b2_dynamicBody: b2BodyType;
+	export var b2_kinematicBody: b2BodyType;
+	export var b2_staticBody: b2BodyType;
 
-	export class b2ShapeType {}
-	export class e_circle extends b2ShapeType {}
-	export class e_edge extends b2ShapeType {}
-	export class e_polygon extends b2ShapeType {}
-	export class e_chain extends b2ShapeType {}
-	export class e_typeCount extends b2ShapeType {}
+	export interface b2ShapeType {}
+	export var e_circle: b2ShapeType;
+	export var e_edge: b2ShapeType;
+	export var e_polygon: b2ShapeType;
+	export var e_chain: b2ShapeType;
+	export var e_typeCount: b2ShapeType;
 
-	export class b2JointType {}
-	export class e_unknownJoint extends b2JointType {}
-	export class e_revoluteJoint extends b2JointType {}
-	export class e_prismaticJoint extends b2JointType {}
-	export class e_distanceJoint extends b2JointType {}
-	export class e_pulleyJoint extends b2JointType {}
-	export class e_mouseJoint extends b2JointType {}
-	export class e_gearJoint extends b2JointType {}
-	export class e_wheelJoint extends b2JointType {}
-	export class e_weldJoint extends b2JointType {}
-	export class e_frictionJoint extends b2JointType {}
-	export class e_ropeJoint extends b2JointType {}
-	export class e_motorJoint extends b2JointType {}
+	export interface b2JointType {}
+	export var e_unknownJoint: b2JointType;
+	export var e_revoluteJoint: b2JointType;
+	export var e_prismaticJoint: b2JointType;
+	export var e_distanceJoint: b2JointType;
+	export var e_pulleyJoint: b2JointType;
+	export var e_mouseJoint: b2JointType;
+	export var e_gearJoint: b2JointType;
+	export var e_wheelJoint: b2JointType;
+	export var e_weldJoint: b2JointType;
+	export var e_frictionJoint: b2JointType;
+	export var e_ropeJoint: b2JointType;
+	export var e_motorJoint: b2JointType;
 
-	export class b2LimitState {}
-	export class e_inactiveLimit extends b2LimitState {}
-	export class e_atLowerLimit extends b2LimitState {}
-	export class e_atUpperLimit extends b2LimitState {}
-	export class e_equalLimits extends b2LimitState {}
+	export interface b2LimitState {}
+	export var e_inactiveLimit: b2LimitState;
+	export var e_atLowerLimit: b2LimitState;
+	export var e_atUpperLimit: b2LimitState;
+	export var e_equalLimits: b2LimitState;
 
-	export class b2ManifoldType {}
-	export class e_circles extends b2ManifoldType {}
-	export class e_faceA extends b2ManifoldType {}
-	export class e_faceB extends b2ManifoldType {}
+	export interface b2ManifoldType {}
+	export var e_circles: b2ManifoldType;
+	export var e_faceA: b2ManifoldType;
+	export var e_faceB: b2ManifoldType;
 
 	export interface b2Contact {
 		GetManifold() : b2Manifold;
@@ -194,7 +194,7 @@ declare module Box2D {
 		ReportFixture(fixture : b2Fixture, point : b2Vec2, normal : b2Vec2, fraction : number) : number;
 	}
 
-	interface b2QueryCallback {
+	export interface b2QueryCallback {
 		b2QueryCallback : any;
 	}
 
@@ -300,45 +300,45 @@ declare module Box2D {
 
 	export class b2BodyDef {
 		private type : b2BodyType;
+		private position : b2Vec2;
+		private angle : number;
+		private linearVelocity : b2Vec2;
+		private angularVelocity : number;
+		private linearDamping : number;
+		private angularDamping : number;
+		private allowSleep : boolean;
+		private awake : boolean;
+		private fixedRotation : boolean;
+		private bullet : boolean;
+		private active : boolean;
+		private userData : any;
+		private gravityScale : number;
 		public get_type(): b2BodyType;
 		public set_type(type : b2BodyType): void;
-		private position : b2Vec2;
 		public get_position(): b2Vec2;
 		public set_position(position : b2Vec2): void;
-		private angle : number;
 		public get_angle(): number;
 		public set_angle(angle : number): void;
-		private linearVelocity : b2Vec2;
 		public get_linearVelocity(): b2Vec2;
 		public set_linearVelocity(linearVelocity : b2Vec2): void;
-		private angularVelocity : number;
 		public get_angularVelocity(): number;
 		public set_angularVelocity(angularVelocity : number): void;
-		private linearDamping : number;
 		public get_linearDamping(): number;
 		public set_linearDamping(linearDamping : number): void;
-		private angularDamping : number;
 		public get_angularDamping(): number;
 		public set_angularDamping(angularDamping : number): void;
-		private allowSleep : boolean;
 		public get_allowSleep(): boolean;
 		public set_allowSleep(allowSleep : boolean): void;
-		private awake : boolean;
 		public get_awake(): boolean;
 		public set_awake(awake : boolean): void;
-		private fixedRotation : boolean;
 		public get_fixedRotation(): boolean;
 		public set_fixedRotation(fixedRotation : boolean): void;
-		private bullet : boolean;
 		public get_bullet(): boolean;
 		public set_bullet(bullet : boolean): void;
-		private active : boolean;
 		public get_active(): boolean;
 		public set_active(active : boolean): void;
-		private userData : any;
 		public get_userData(): any;
 		public set_userData(data : any): void;
-		private gravityScale : number;
 		public get_gravityScale(): number;
 		public set_gravityScale(gravityScale : number): void;
 		constructor();
@@ -635,9 +635,9 @@ declare module Box2D {
 
 	export class b2PolygonShape extends b2Shape {
 		private m_centroid : b2Vec2;
-		public get_m_centroid(): b2Vec2;
-		public set_m_centroid(m_centroid: b2Vec2): void;
 		private m_count : number;
+		public get_m_centroid() : b2Vec2;
+		public set_m_centroid(m_centroid: b2Vec2) : void;
 		public get_m_count() : number;
 		public set_m_count(m_count : number) : void;
 		constructor();
